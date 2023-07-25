@@ -4,6 +4,10 @@ const path = require("path");
 
 module.exports = async (req, res, next) =>{
 
+  if(!req.file){
+    next(); 
+  } else{
+
     const directoryPath =  path.join(__dirname, "../images");
 
       const { buffer, originalname } = req.file;
@@ -25,5 +29,7 @@ module.exports = async (req, res, next) =>{
       }catch(e){
         res.status(500).json(e)
       }
+
+  }
       
 }

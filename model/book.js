@@ -18,7 +18,7 @@ const bookSchema = mongoose.Schema({
 
 bookSchema.pre('save', function(next) {
   const sum = this.ratings.reduce((acc, rating) => acc + rating.grade, 0);
-  this.averageRating = sum / this.ratings.length;
+  this.averageRating =  Math.floor(sum / this.ratings.length); 
   next();
 });
 
