@@ -30,7 +30,7 @@ module.exports.login = async (req, res) => {
   
       if(user != null) return res.status(409).json({message:'User already exists'});
 
-      const hash = await bcrypt.hash(req.body.password, 10);
+      const hash = await bcrypt.hash(req.body.password, 2);
        user = new User({
         email: req.body.email,
         password: hash
